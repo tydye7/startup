@@ -1,7 +1,2 @@
-Notes for tests:
+Notes for test:
 
-,,,
-
-testing format
-
-'''
