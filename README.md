@@ -14,4 +14,3 @@
 
 //TODO
 
-![tree](Tree.jpeg)
