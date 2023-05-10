@@ -9,7 +9,7 @@
 ### Key Features:
 
 - There wil be a login screen and high scores screen and the main part will be cards with questions and buttons to choose your answer.
-![Login](Screenshot 2023-05-10 at 6.49.59 AM.png)
+![Login](Login Small.png)
 
 ### Technologies:
 
