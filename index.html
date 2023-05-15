@@ -1,17 +1,69 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>
-            title
-        </title>
-    </head>
-    <Header>
-        header
-    </Header>
-    <main>
-        main
-    </main>
-    <footer>
-        footer
-    </footer>
+<head>
+  <title>Login Page</title>
+  <style>
+    /* CSS styles for the menu bar */
+    .menu {
+      background-color: #333;
+      overflow: hidden;
+    }
+
+    .menu a {
+      color: white;
+      display: inline-block;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    .menu a:hover {
+      background-color: #111;
+    }
+
+    /* CSS styles for the login form */
+    .login-form {
+      margin: 50px auto;
+      width: 300px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    .login-form input[type="text"],
+    .login-form input[type="password"] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
+    }
+
+    .login-form input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <!-- Menu bar -->
+  <div class="menu">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </div>
+
+  <!-- Login form -->
+  <div class="login-form">
+    <h2>Login</h2>
+    <form>
+      <input type="text" placeholder="Username" required><br>
+      <input type="password" placeholder="Password" required><br>
+      <input type="submit" value="Login">
+    </form>
+  </div>
+</body>
 </html>
