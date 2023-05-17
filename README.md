@@ -27,11 +27,13 @@
 
 ## HMTL Deliverable
 
-//TODO
+- I created the html to provide the general structure for my web application
+- I provided placdholders for all the necessary technologies/functions
 
 ## CSS Deliverable
 
-//TODO
+- I added basic styling to my .html pages
+- The buttons, menus, etc.. have been styled
 
 ## JavaScript Deliverable
 
