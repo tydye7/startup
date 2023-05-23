@@ -16,9 +16,15 @@
   }
   
   .menu a {
-    color: #fff;
+    color: white;
+    padding: 14px 16px;
     text-decoration: none;
-    padding: 5px;
+    float: right;
+  }
+  
+  .menu a:hover {
+    background-color: #ddd;
+    color: black;
   }
   
   h1 {
