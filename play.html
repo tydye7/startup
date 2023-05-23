@@ -2,9 +2,7 @@
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="playStyles.css" />
-  <link rel="icon" href="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/bf8dd150833377.58dad0c4806e9.png">
   <script src="play.js"></script>
-
   <title>Trivia Game</title>
 </head>
 <body>
@@ -15,12 +13,17 @@
     <a href="index.html">Login</a>
   </div>
 
-  <h1>Welcome player1 Play Trivia Game</h1>
-  <button onclick="displayQuestion()">Press Start</button>
-  <div id="question"></div>
-  <input type="text" id="answer" placeholder="Your answer">
-  <button onclick="checkAnswer()">Submit</button>
-  <div id="result"></div>
-
+  <div class="container">
+    <h1>Welcome to Trivia Game</h1>
+    <div class="button-container">
+      <button onclick="startGame()">Start Game</button>
+    </div>
+    <div class="question-container" style="display: none;">
+      <div id="question"></div>
+      <input type="text" id="answer" placeholder="Your answer">
+      <button onclick="checkAnswer()">Submit</button>
+    </div>
+    <div id="result" class="result-container"></div>
+  </div>
 </body>
 </html>
