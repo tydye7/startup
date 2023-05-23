@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" type="text/css" href="homeStyles.css" />
+  <link rel="stylesheet" type="text/css" href="playStyles.css" />
   <link rel="icon" href="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/bf8dd150833377.58dad0c4806e9.png">
+  <script src="play.js"></script>
+
   <title>Trivia Game</title>
 </head>
 <body>
   <div class="menu">
-    <a href="home.html">Home</a>
+    <a href="play.html">Play</a>
     <a href="about.html">About</a>
     <a href="scores.html">Scores</a>
     <a href="index.html">Login</a>
   </div>
 
   <h1>Welcome player1 Play Trivia Game</h1>
-  <p>Press Start</p>
-  <input type="submit" value="Start">
-  <p>Question 1: What is the capital of California?</p>
-  <input type="submit" value="Los Angeles">
-  <input type="submit" value="San Diego">
-  <input type="submit" value="San Francisco">
-  <input type="submit" value="Sacremento">
+  <button onclick="displayQuestion()">Press Start</button>
+  <div id="question"></div>
+  <input type="text" id="answer" placeholder="Your answer">
+  <button onclick="checkAnswer()">Submit</button>
+  <div id="result"></div>
 
 </body>
 </html>
