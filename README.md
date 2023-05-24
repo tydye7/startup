@@ -18,7 +18,7 @@
 
 - **HTML** - For the structure of the website
 - **CSS** - To style the buttons, cards, and other elements
-- **JavaScript** - This will be the gears working in the background to fun the appropriate functions to run the game
+- **JavaScript** - This will be the gears working in the background to run the appropriate functions to run the game
 - **Service** - This will manage the and the requests and data going in and out for the various function calls
 - **DB** - This will store the information for login credentials, trivia questions, high scores etc...
 - **Login** - To register users and securely store their credentials
