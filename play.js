@@ -11,6 +11,34 @@ const triviaData = [
   {
     question: "Who painted the Mona Lisa?",
     answer: "Leonardo da Vinci"
+  },
+  {
+    question: "What is the tallest mountain in the world?",
+    answer: "Mount Everest"
+  },
+  {
+    question: "What is the largest country in the world?",
+    answer: "Russia"
+  },
+  {
+    question: "What is the longest river in the world?",
+    answer: "Nile"
+  },
+  {
+    question: "What is the diameter of Earth?",
+    answer: "8,000 miles"
+  },
+  {
+    question: "What is the largest ocean in the world?",
+    answer: "Pacific Ocean"
+  },
+  {
+    question: "What is the largest animal in the world?",
+    answer: "Blue Whale"
+  },
+  {
+    question: "What is the largest bird in the world?",
+    answer: "Ostrich"
   }
 ];
 
