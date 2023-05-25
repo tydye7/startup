@@ -40,6 +40,7 @@ const triviaData = [
     question: "What is the largest bird in the world?",
     answer: "Ostrich"
   }
+  // ...rest of the questions
 ];
 
 let currentQuestionIndex = 0;
@@ -50,13 +51,11 @@ function startGame() {
   document.querySelector(".question-container").style.display = "block";
   displayQuestion();
 }
-
 // Function to display the current question
 function displayQuestion() {
   const questionElement = document.getElementById("question");
   questionElement.textContent = triviaData[currentQuestionIndex].question;
 }
-
 // Function to check the user's answer
 function checkAnswer() {
   const userAnswer = document.getElementById("answer").value;
@@ -78,4 +77,8 @@ function checkAnswer() {
     resultElement.textContent = "Game Over";
     document.getElementById("answer").style.display = "none";
   }
+}
+
+function setLoggedIn() {
+  isLoggedIn = true;
 }
