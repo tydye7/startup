@@ -15,6 +15,9 @@
 
   <div class="container">
     <h1>Welcome to Trivia Game</h1>
+    <div class="username-container">
+      <span id="username-display"></span>
+    </div>
     <div class="button-container">
       <button id="start-button" onclick="startGame()">Start Game</button>
     </div>
@@ -24,8 +27,16 @@
       <button onclick="checkAnswer()">Submit</button>
     </div>
     <div id="result" class="result-container"></div>
+    <div id="question-count" class="question-count"></div>
+    <div id="score" class="score-container"></div>
   </div>
   
   <script src="auth.js"></script>
+  <script>
+    // Display the username at the top right of the screen
+    const usernameDisplay = document.getElementById("username-display");
+    const username = localStorage.getItem("username");
+    usernameDisplay.textContent = `Welcome, ${username}`;
+  </script>
 </body>
 </html>

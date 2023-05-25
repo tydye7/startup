@@ -44,6 +44,7 @@ const triviaData = [
 ];
 
 let currentQuestionIndex = 0;
+let score = 0;
 
 // Function to start the game
 function startGame() {
@@ -51,11 +52,16 @@ function startGame() {
   document.querySelector(".question-container").style.display = "block";
   displayQuestion();
 }
+
 // Function to display the current question
 function displayQuestion() {
   const questionElement = document.getElementById("question");
+  const questionCountElement = document.getElementById("question-count");
+  
   questionElement.textContent = triviaData[currentQuestionIndex].question;
+  questionCountElement.textContent = `Question ${currentQuestionIndex + 1} of ${triviaData.length}`;
 }
+
 // Function to check the user's answer
 function checkAnswer() {
   const userAnswer = document.getElementById("answer").value;
@@ -63,6 +69,7 @@ function checkAnswer() {
 
   if (userAnswer.trim().toLowerCase() === triviaData[currentQuestionIndex].answer.toLowerCase()) {
     resultElement.textContent = "Correct!";
+    score++; // Increment score if the answer is correct
   } else {
     resultElement.textContent = "Wrong answer. Try again!";
   }
@@ -73,12 +80,28 @@ function checkAnswer() {
     displayQuestion();
     document.getElementById("answer").value = "";
   } else {
-    // Display game over message
+    // Display game over message, update the database, and show the score
     resultElement.textContent = "Game Over";
     document.getElementById("answer").style.display = "none";
+    updateDatabase(score);
+    displayScore(score);
   }
 }
 
-function setLoggedIn() {
-  isLoggedIn = true;
+// Function to update the database with the score
+function updateDatabase(score) {
+  // Here, you can replace this mock implementation with your actual database calls
+  const databaseData = {
+    username: localStorage.getItem("username"),
+    score: score
+  };
+
+  // Mock API call to update the database
+  console.log("Updating database with the following data:", databaseData);
+}
+
+// Function to display the score
+function displayScore(score) {
+  const scoreElement = document.getElementById("score");
+  scoreElement.textContent = `Your score: ${score}`;
 }
