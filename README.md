@@ -39,7 +39,7 @@
 
 - Wrote JS functions that handle the start of the game when start button is pressed
 - Functions that display the question
-- Functions that read the input answer and determin if it is correct or not
+- Functions that read the input answer and determine if it is correct or not
 - Functions to display result of quiz questions
 
 ## Service Deliverable
