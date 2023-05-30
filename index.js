@@ -19,14 +19,37 @@ function login(event) {
     }
   }
   
-  function logout() {
-    // Perform logout logic here
-    // Example: Clear any stored authentication tokens or session data
+function logout() {
+  // Perform logout logic here
+  // Example: Clear any stored authentication tokens or session data
+
+  // Remove the username from local storage
+  localStorage.removeItem("username");
+
+  // Reload the index.html page to display the login form again
+  window.location.reload();
+}
   
-    // Remove the username from local storage
-    localStorage.removeItem("username");
-  
-    // Reload the index.html page to display the login form again
-    window.location.reload();
-  }
-  
+const express = require('express');
+const app = express();
+
+
+app.use(function (req, res, next) {
+    console.log('Time: %d', Date.now());
+    next();
+});
+
+app.use(express.static('public'));
+
+app.get('/api/hello', (req, res) => {
+    res.send('msg: "Hello", number: 337');
+    console.log("hello called");
+});
+
+app.get('*', (req, res) => {
+    res.send("<h1>help i am lost</h1>");
+});
+
+app.listen(startup.tman7.click, () => {
+    console.log('Server is running...');
+});
