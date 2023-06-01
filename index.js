@@ -50,6 +50,6 @@ app.get('*', (req, res) => {
     res.send("<h1>help i am lost</h1>");
 });
 
-app.listen(startup.tman7.click, () => {
+app.listen(8080, () => {
     console.log('Server is running...');
 });
