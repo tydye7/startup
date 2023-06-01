@@ -2,17 +2,17 @@
 
 ## Specification
 
-### Elevator Pitch:
+### Elevator Pitch
 
 - I am going to make a trivia game website. There will be different triva question packs that have themes.
 
-### Key Features:
+### Key Features
 
 - There wil be a login screen and high scores screen and the main part will be cards with questions and buttons to choose your answer.
 
 ![Login](LoginSmall.png)
 
-### Technologies:
+### Technologies
 
 - I will use these technologies in the following ways:
 
@@ -44,7 +44,7 @@
 
 ## Service Deliverable
 
-//TODO
+- Added a server to the project
 
 ## DB Deliverable
 
