@@ -8,7 +8,7 @@
 
 ### Key Features
 
-- There wil be a login screen and high scores screen and the main part will be cards with questions and buttons to choose your answer.
+- There will be a login screen and high scores screen and the main part will be cards with questions and buttons to choose your answer.
 
 ![Login](images/LoginSmall.png)
 
