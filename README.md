@@ -44,7 +44,7 @@
 
 ## Service Deliverable
 
-- Added a server to the project
+- Added a server to the project by updating the index.js and index.html files
 
 ## DB Deliverable
 
