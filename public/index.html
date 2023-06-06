@@ -25,5 +25,27 @@
   
   <script src="index.js"></script>
   <img src="https://www.griswoldhomecare.com/images/blog/trivia.jpg" width="150">
+
+  <script>
+    function login(event) {
+      event.preventDefault();
+
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      // Perform authentication logic here
+      // Example: Make an API call to verify the username and password
+
+      // If authentication is successful, redirect the user to the play.html screen
+      const authenticated = true; // Replace with your authentication check
+
+      if (authenticated) {
+        localStorage.setItem("username", username); // Store the username locally
+        window.location.replace(`play.html?username=${username}`);
+      } else {
+        alert("Invalid username or password. Please try again.");
+      }
+    }
+  </script>
 </body>
 </html>
