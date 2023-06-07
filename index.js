@@ -34,7 +34,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 
-const port = process.env.PORT || 3000; // Use the port specified in the environment variable or 3000 as default
+const port = process.env.PORT || 4000; // Use the port specified in the environment variable or 3000 as default
 
 app.use(express.json());
 app.use(express.static('public'));
