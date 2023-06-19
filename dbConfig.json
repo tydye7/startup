@@ -1,5 +1,5 @@
 {
-    "hostname": "localhost",
-    "userName": "userName",
-    "password": "password"
+    "hostname": "cluster0.1jruisu.mongodb.net",
+    "userName": "CS260",
+    "password": "CS260pw"
 }
