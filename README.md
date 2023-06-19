@@ -44,7 +44,8 @@
 
 ## Service Deliverable
 
-- Added a server to the project by updating the index.js and index.html files
+- Added a server to the project by updating the index.js and index.html files with endpoints
+- Added a third party endpoint call in the about.js/about.html
 
 ## DB Deliverable
 
