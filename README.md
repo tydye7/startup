@@ -55,7 +55,8 @@
 
 ## Login Deliverable
 
-//TODO
+- Added a login page with a new user registration
+- Password is encrypted and stored in the database
 
 ## WebSocket Deliverable
 
