@@ -16,11 +16,18 @@
   
   <div class="login-form">
     <h2>Login</h2>
-    <form onsubmit="login(event)">
+    <form id="login-form" onsubmit="login(event)">
       <input type="text" id="username" placeholder="Username" required><br>
       <input type="password" id="password" placeholder="Password" required><br>
       <input type="submit" value="Login">
     </form>
+    <p id="registration-message"></p>
+    <form id="registration-form" onsubmit="register(event)" style="display: none;">
+      <input type="text" id="new-username" placeholder="New Username" required><br>
+      <input type="password" id="new-password" placeholder="New Password" required><br>
+      <input type="submit" value="Register">
+    </form>
+    <button onclick="showRegistrationForm()">Create New Account</button>
   </div>
   
   <script src="index.js"></script>
@@ -35,16 +42,66 @@
 
       // Perform authentication logic here
       // Example: Make an API call to verify the username and password
+      fetch('/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          username: username,
+          password: password
+        })
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            localStorage.setItem('username', username); // Store the username locally
+            window.location.replace(`play.html?username=${username}`);
+          } else {
+            alert(data.message);
+          }
+        })
+        .catch(error => {
+          console.error('Error during login:', error);
+          alert('An error occurred while logging in.');
+        });
+    }
 
-      // If authentication is successful, redirect the user to the play.html screen
-      const authenticated = true; // Replace with your authentication check
+    function register(event) {
+      event.preventDefault();
 
-      if (authenticated) {
-        localStorage.setItem("username", username); // Store the username locally
-        window.location.replace(`play.html?username=${username}`);
-      } else {
-        alert("Invalid username or password. Please try again.");
-      }
+      const username = document.getElementById("new-username").value;
+      const password = document.getElementById("new-password").value;
+
+      // Perform registration logic here
+      // Example: Make an API call to register the new user
+      fetch('/api/login/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          username: username,
+          password: password
+        })
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            document.getElementById("registration-message").textContent = data.message;
+          } else {
+            alert(data.message);
+          }
+        })
+        .catch(error => {
+          console.error('Error during registration:', error);
+          alert('An error occurred while registering the user.');
+        });
+    }
+
+    function showRegistrationForm() {
+      document.getElementById("login-form").style.display = "none";
+      document.getElementById("registration-form").style.display = "block";
     }
   </script>
 </body>
