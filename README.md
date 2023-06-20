@@ -49,7 +49,9 @@
 
 ## DB Deliverable
 
-//TODO
+- Added a database
+- Store scores in database with the player name
+- Retrieve score and display in high scores
 
 ## Login Deliverable
 
