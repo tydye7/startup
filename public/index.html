@@ -20,6 +20,7 @@
       <input type="text" id="username" placeholder="Username" required><br>
       <input type="password" id="password" placeholder="Password" required><br>
       <input type="submit" value="Login">
+      <button onclick="register()">Register</button>
     </form>
   </div>
   
@@ -33,18 +34,53 @@
       const username = document.getElementById("username").value;
       const password = document.getElementById("password").value;
 
-      // Perform authentication logic here
-      // Example: Make an API call to verify the username and password
+      // Make an API call to authenticate the user
+      fetch('/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username, password })
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            localStorage.setItem('username', username);
+            window.location.replace(`play.html?username=${username}`);
+          } else {
+            alert(data.message);
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('An error occurred. Please try again.');
+        });
+    }
 
-      // If authentication is successful, redirect the user to the play.html screen
-      const authenticated = true; // Replace with your authentication check
+    function register() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
 
-      if (authenticated) {
-        localStorage.setItem("username", username); // Store the username locally
-        window.location.replace(`play.html?username=${username}`);
-      } else {
-        alert("Invalid username or password. Please try again.");
-      }
+      // Make an API call to register a new user
+      fetch('/api/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username, password })
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            alert('Registration successful. You can now log in.');
+          } else {
+            alert(data.message);
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('An error occurred. Please try again.');
+        });
     }
   </script>
 </body>
