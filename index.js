@@ -1,3 +1,4 @@
+delete require.cache[require.resolve('./database.js')];
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -12,10 +13,12 @@ app.use(express.static('public'));
 const loginRouter = require('./public/login');
 const aboutRouter = require('./public/about');
 const scoresRouter = require('./public/scores.js');
+const userRouter = require('./public/login.js');
 
 app.use('/api/login', loginRouter);
 app.use('/api/about', aboutRouter);
 app.use('/api/scores', scoresRouter);
+app.use('/api/user', userRouter);
 
 app.get('/play', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'play.html'));
