@@ -105,6 +105,7 @@ function updateDatabase(score) {
     .then(response => response.json())
     .then(data => {
       console.log('Score stored in the database:', data);
+      displayHighScores();
     })
     .catch(error => {
       console.error('Error storing score in the database:', error);
@@ -115,4 +116,22 @@ function updateDatabase(score) {
 function displayScore(score) {
   const scoreElement = document.getElementById("score");
   scoreElement.textContent = `Your score: ${score}`;
+
+  // Fetch updated high scores and display them
+  fetch('/api/scores')
+    .then((response) => response.json())
+    .then((data) => {
+      const highScoresList = document.getElementById('highScoresContainer');
+      highScoresList.innerHTML = ''; // Clear existing content
+
+      // Iterate over the high scores and create list items
+      data.highScores.forEach((score) => {
+        const listItem = document.createElement('li');
+        listItem.textContent = `${score.username}: ${score.score}`;
+        highScoresList.appendChild(listItem);
+      });
+    })
+    .catch((error) => {
+      console.error('Error fetching high scores:', error);
+    });
 }

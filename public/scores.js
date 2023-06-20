@@ -7,7 +7,7 @@ router.get('/', (_req, res) => {
   // Fetch scores from the database
   DB.fetchScores()
     .then(scores => {
-      res.json(scores);
+      res.json({ highScores: scores });
     })
     .catch(error => {
       console.error('Error fetching scores:', error);
@@ -15,34 +15,18 @@ router.get('/', (_req, res) => {
     });
 });
 
+// Handle POST request to /api/scores
+router.post('/', (req, res) => {
+  const { username, score } = req.body;
+  // Save the score to the database
+  DB.saveScore(username, score)
+    .then(savedScore => {
+      res.json(savedScore);
+    })
+    .catch(error => {
+      console.error('Error saving score:', error);
+      res.status(500).json({ error: 'Failed to save score' });
+    });
+});
+
 module.exports = router;
-
-
-// Function to display the scores
-function displayScores(scores, containerId) {
-  const containerElement = document.getElementById(containerId);
-  containerElement.innerHTML = ''; // Clear existing content
-
-  scores.forEach(score => {
-    const scoreElement = document.createElement('p');
-    scoreElement.textContent = `${score.username}: ${score.score}`;
-    containerElement.appendChild(scoreElement);
-  });
-}
-
-// Fetch and display the scores
-fetch('/api/scores')
-  .then(response => response.json())
-  .then(data => {
-    const highScoresContainer = document.getElementById('highScoresContainer');
-    const activeGamesContainer = document.getElementById('activeGamesContainer');
-
-    const highScores = data.highScores;
-    const activeGames = data.activeGames;
-
-    displayScores(highScores, 'highScoresContainer');
-    displayScores(activeGames, 'activeGamesContainer');
-  })
-  .catch(error => {
-    console.error('Error fetching scores:', error);
-  });

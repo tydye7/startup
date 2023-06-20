@@ -1,22 +1,39 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <link rel="stylesheet" type="text/css" href="scoresStyles.css" />
-  <link rel="icon" href="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/bf8dd150833377.58dad0c4806e9.png">
-  <title>Trivia Game</title>
-</head>
-<body>
-  <div class="menu">
-    <a href="index.html" onclick="logout()">Logout</a>
-    <a href="about.html">About</a>
-    <a href="scores.html">Scores</a>
-    <a href="play.html">Play</a>
-  </div>
-  <h1>High Scores</h1>
-  <div id="highScoresContainer"></div>
-  <h1>Active Games</h1>
-  <div id="activeGamesContainer"></div>
+  <head>
+    <link rel="stylesheet" type="text/css" href="scoresStyles.css" />
+    <link rel="icon" href="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/bf8dd150833377.58dad0c4806e9.png">
+    <title>Trivia Game</title>
+  </head>
+  <body>
+    <div class="menu">
+      <a href="index.html" onclick="logout()">Logout</a>
+      <a href="about.html">About</a>
+      <a href="scores.html">Scores</a>
+      <a href="play.html">Play</a>
+    </div>
+    <h1>High Scores</h1>
+    <ul id="highScoresContainer"></ul>
+    <h1>Active Games</h1>
+    <div id="activeGamesContainer"></div>
 
-  <script src="scores.js"></script>
-</body>
+    <script>
+      // Fetch high scores from the server and display them
+      fetch('/api/scores')
+        .then((response) => response.json())
+        .then((data) => {
+          const highScoresList = document.getElementById('highScoresContainer');
+
+          // Iterate over the high scores and create list items
+          data.highScores.forEach((score) => {
+            const listItem = document.createElement('li');
+            listItem.textContent = `${score.username}: ${score.score}`;
+            highScoresList.appendChild(listItem);
+          });
+        })
+        .catch((error) => {
+          console.error('Error fetching high scores:', error);
+        });
+    </script>
+  </body>
 </html>
