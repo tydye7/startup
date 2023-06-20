@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 // Handle GET request to /api/about
-router.get('/about', (_req, res) => {
+router.get('/', (_req, res) => {
   const aboutMessage = 'This is a trivia game web application.';
   res.json({ message: aboutMessage });
 });

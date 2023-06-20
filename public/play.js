@@ -90,14 +90,25 @@ function checkAnswer() {
 
 // Function to update the database with the score
 function updateDatabase(score) {
-  // Here, you can replace this mock implementation with your actual database calls
   const databaseData = {
     username: localStorage.getItem("username"),
     score: score
   };
 
-  // Mock API call to update the database
-  console.log("Updating database with the following data:", databaseData);
+  fetch('/api/scores', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(databaseData)
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Score stored in the database:', data);
+    })
+    .catch(error => {
+      console.error('Error storing score in the database:', error);
+    });
 }
 
 // Function to display the score
