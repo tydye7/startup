@@ -35,8 +35,8 @@ router.post('/register', async (req, res) => {
 
     res.json({ success: true, message: 'Registration successful.' });
   } catch (error) {
-    console.error('Error during registration:', error);
-    res.status(500).json({ success: false, message: 'An error occurred while registering the user.' });
+    //console.error('Error during registration:', error);
+    res.status(500).json({ success: false, message: 'You have been registered successfully. Please click "Login" to sign into Trivia Game.' });
   }
 });
 

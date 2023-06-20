@@ -3,7 +3,8 @@ const config = require('./dbConfig.json');
 const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostname}`;
 
 // Create a MongoClient
-const client = new MongoClient(url);
+const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
+
 let scoreCollection;
 let userCollection;
 
@@ -11,8 +12,9 @@ async function testConnection() {
   try {
     await client.connect();
     console.log('Connected to the database successfully');
-    scoreCollection = client.db().collection('score'); // Initialize the score collection
-    userCollection = client.db().collection('users'); // Initialize the user collection
+    const db = client.db(config.dbName);
+    scoreCollection = db.collection('score'); // Initialize the score collection
+    userCollection = db.collection('users'); // Initialize the user collection
   } catch (error) {
     console.log(`Unable to connect to the database at ${url}: ${error.message}`);
     process.exit(1);
@@ -44,6 +46,7 @@ async function fetchScores() {
 
 async function saveUser(username, password) {
   try {
+    await testConnection(); // Ensure that the connection is established before saving the user
     const newUser = { username, password };
     const result = await userCollection.insertOne(newUser);
     console.log('User saved:', result.ops[0]);
@@ -66,7 +69,6 @@ async function findUser(username) {
 }
 
 module.exports = {
-  client,
   testConnection,
   saveScore,
   fetchScores,
