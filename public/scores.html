@@ -36,26 +36,28 @@
         });
 
       // Connect to the WebSocket server
-      const webSocket = new WebSocket('ws://localhost:4000');
+      // Connect to the WebSocket server
+      const socket = new WebSocket('ws://localhost:4000');
 
       // WebSocket connection open event
-      webSocket.onopen = () => {
+      socket.onopen = () => {
         console.log('WebSocket connection opened');
       };
 
       // WebSocket message event
-      webSocket.onmessage = (event) => {
-        const message = event.data;
-        // Display the message in the active games container
+      socket.onmessage = (event) => {
+        const message = JSON.parse(event.data);
         const activeGamesContainer = document.getElementById('activeGamesContainer');
-        const messageElement = document.createElement('p');
-        messageElement.textContent = message;
-        activeGamesContainer.appendChild(messageElement);
-      };
 
-      // WebSocket connection close event
-      webSocket.onclose = () => {
-        console.log('WebSocket connection closed');
+        // Clear the activeGamesContainer before updating with the new list
+        activeGamesContainer.innerHTML = '';
+
+      // Iterate over the active players' usernames and create paragraphs for each
+        message.forEach((username) => {
+          const messageElement = document.createElement('p');
+          messageElement.textContent = username;
+          activeGamesContainer.appendChild(messageElement);
+        });
       };
 
       // Function to send a message over the WebSocket connection
@@ -63,7 +65,7 @@
         const messageInput = document.getElementById('messageInput');
         const message = messageInput.value;
         // Send the message to the server
-        webSocket.send(message);
+        socket.send(message);
         messageInput.value = '';
       }
     </script>

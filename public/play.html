@@ -37,6 +37,24 @@
     const usernameDisplay = document.getElementById("username-display");
     const username = localStorage.getItem("username");
     usernameDisplay.textContent = `Welcome, ${username}`;
+
+    webSocket.onmessage = (event) => {
+    const message = event.data;
+    const activeGamesContainer = document.getElementById('activeGamesContainer');
+    
+    // Clear the activeGamesContainer before updating with the new list
+    activeGamesContainer.innerHTML = '';
+
+    // Parse the message as JSON
+    const activePlayers = JSON.parse(message);
+
+    // Iterate over the active players' usernames and create paragraphs for each
+    activePlayers.forEach((username) => {
+      const messageElement = document.createElement('p');
+      messageElement.textContent = username;
+      activeGamesContainer.appendChild(messageElement);
+    });
+  };
   </script>
 </body>
 </html>

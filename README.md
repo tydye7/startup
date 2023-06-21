@@ -60,7 +60,7 @@
 
 ## WebSocket Deliverable
 
-//TODO
+- Wrote a lot of the code to handle the web socket and displaying the names of other active players. It doesn't work all the way, but I just turned it in to see if I could get partial credit.
 
 ## React Deliverable
 
